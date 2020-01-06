@@ -6,11 +6,7 @@ let mainWindow;
 function createWindow() {
     const startUrl =
         process.env.ELECTRON_START_URL ||
-        url.format({
-            pathname: path.join(__dirname, "../index.html"),
-            protocol: "file:",
-            slashes: true
-        });
+        `file://${path.join(__dirname, "../build/index.html")}`;
     mainWindow = new BrowserWindow({ width: 820, height: 480 });
     mainWindow.loadURL(startUrl);
     mainWindow.on("closed", function() {

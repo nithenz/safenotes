@@ -2,7 +2,7 @@
     "name": "safenotes",
     "version": "0.1.0",
     "private": true,
-    "main": "src/main.js",
+    "main": "public/electron.js",
     "homepage": "./",
     "build": {
         "appId": "com.powercoder.safenotes",
@@ -13,7 +13,7 @@
         },
         "files": [
             "build/**/*",
-            "node_modules/**/*"
+            "package.json"
         ],
         "directories": {
             "buildResources": "assets"
@@ -40,8 +40,8 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "postinstall": "electron-builder install-app-deps",
-        "preelectron-pack": "yarn build",
-        "electron-pack": "build -mw"
+        "pre-dist": "rimraf build && yarn build",
+        "dist": "rimraf dist && electron-builder build -w"
     },
     "eslintConfig": {
         "extends": "react-app"
